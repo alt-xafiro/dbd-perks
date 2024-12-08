@@ -1,0 +1,37 @@
+.header {
+  position: relative;
+  z-index: 8975;
+
+  display: flex;
+  justify-content: center;
+  height: $mobile-header-height;
+  padding-left: $mobile-padding;
+  padding-right: $mobile-padding;
+
+  background-color: $color-purple-600;
+
+  @media (min-width: $tablet-width) {
+    height: $tablet-header-height;
+    padding-left: $tablet-padding;
+    padding-right: $tablet-padding;
+  }
+
+  @media (min-width: $desktop-width) {
+    height: $desktop-header-height;
+  }
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: $max-content-width;
+  height: 100%;
+  padding-top: $mobile-padding;
+  padding-bottom: $mobile-padding;
+
+  @media (min-width: $desktop-width) {
+    min-height: $desktop-header-height;
+    padding: $desktop-header-padding;
+  }
+}

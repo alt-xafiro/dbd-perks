@@ -1,0 +1,114 @@
+:root {
+  --search-input-height: 48px;
+  --search-input-padding-left-right: 12px;
+
+  --search-buttons-width: calc(
+    var(--search-reset-button-space-width) +
+      var(--player-side-switchers-space-width) + var(--search-buttons-gap)
+  );
+  --search-buttons-gap: calc(
+    (var(--search-input-height) - var(--player-side-switcher-size)) / 2
+  );
+
+  --search-reset-button-size: 36px;
+  --search-reset-button-space-width: calc(
+    var(--search-reset-button-size) + var(--search-buttons-gap)
+  );
+  --search-reset-button-svg-ratio: 0.5;
+
+  @media (min-width: $tablet-width) {
+    --search-input-height: 64px;
+    --search-input-padding-left-right: 23px;
+
+    --search-reset-button-size: 48px;
+  }
+}
+
+.filter {
+  position: relative;
+}
+
+.filter__search {
+  width: 100%;
+  height: var(--search-input-height);
+  padding-left: var(--search-input-padding-left-right);
+  padding-right: var(--search-buttons-width);
+  border: none;
+  border-radius: 8px;
+
+  background-color: $color-grey-500;
+  box-shadow: 0 4px 21px 6px rgba($color-black, 0.25);
+
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  color: $color-purple-500;
+
+  &[value=""] {
+    --search-buttons-width: calc(
+      var(--player-side-switchers-space-width) + var(--search-buttons-gap)
+    );
+  }
+
+  @media (min-width: $tablet-width) {
+    font-size: 32px;
+  }
+}
+
+.filter__search-buttons {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: var(--search-buttons-width);
+  padding-right: var(--search-buttons-gap);
+}
+
+.filter__search[value=""] + .filter__search-buttons {
+  --search-buttons-width: calc(
+    var(--player-side-switchers-space-width) + var(--search-buttons-gap)
+  );
+}
+
+.filter__search-reset {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--search-reset-button-size);
+  height: var(--search-reset-button-size);
+  margin-right: var(--search-buttons-gap);
+  padding: 0;
+  border: none;
+
+  background-color: $color-grey-500;
+
+  cursor: pointer;
+}
+
+.filter__search-reset-svg {
+  width: calc(
+    var(--search-reset-button-size) * var(--search-reset-button-svg-ratio)
+  );
+  height: calc(
+    var(--search-reset-button-size) * var(--search-reset-button-svg-ratio)
+  );
+
+  stroke: rgba($color-purple-500, 0.9);
+
+  transition-property: stroke;
+  transition-duration: $transition-duration;
+}
+
+.filter__search-reset:hover .filter__search-reset-svg {
+  stroke: rgba($color-purple-500, 0.8);
+}
+
+.filter__search-reset:active .filter__search-reset-svg {
+  stroke: rgba($color-purple-500, 0.7);
+}

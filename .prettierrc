@@ -1,0 +1,26 @@
+{
+  "htmlWhitespaceSensitivity": "strict",
+  "overrides": [
+    {
+      "files": "*.{js,jsx,ts,tsx,mjs,cjs}",
+      "options": {
+        "bracketSameLine": false,
+        "singleQuote": true,
+        "jsxSingleQuote": false,
+        "plugins": ["@trivago/prettier-plugin-sort-imports"],
+        "importOrder": [
+          "<THIRD_PARTY_MODULES>",
+          "^@/(assets|data)/?(.*)$",
+          "^@/(model|consts|store|hooks|utils)/?(.*)$",
+          "^@/types/?(.*)$",
+          "^@/styles/?(.*)$",
+          "^@/components/?(.*)$",
+          "^@/(.*)$",
+          "^[./]"
+        ],
+        "importOrderSeparation": true,
+        "importOrderSortSpecifiers": true
+      }
+    }
+  ]
+}
